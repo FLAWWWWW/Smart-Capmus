@@ -1,0 +1,21 @@
+✔ T1: valid free interval -> Available
+✔ T2: overlap with an existing booking -> Unavailable
+✔ T3: blocked room -> Unavailable
+✔ T4: duration = 0 -> validation error
+✔ T5: duration = 121 -> validation error
+✔ T6: past start time -> validation error
+✔ T7: adjacent non-overlapping interval -> Available
+✔ T8: booking data unchanged after checks
+✔ E1: duration exactly 120 is allowed
+✔ E2: start equal to current time is not in the future
+✔ E3: empty / malformed start -> INVALID_START
+✔ E4: non-integer durations rejected
+✔ E5: AC6 every rejection has a distinct, non-empty message
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64.123117

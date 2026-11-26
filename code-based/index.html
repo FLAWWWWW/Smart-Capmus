@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'">
+<title>Smart Campus Room Availability Checker (code-based)</title>
+<style>
+  body{font-family:system-ui,Arial,sans-serif;margin:0;background:#f4f6f8;color:#1b2430}
+  main{max-width:520px;margin:0 auto;padding:16px}
+  h1{font-size:1.25rem}
+  .card{background:#fff;border-radius:8px;padding:16px;margin-bottom:12px;box-shadow:0 1px 3px #0002}
+  label{display:block;margin:10px 0 4px;font-weight:600}
+  input[type=text]{width:100%;box-sizing:border-box;padding:8px;font-size:1rem}
+  button{margin-top:14px;padding:10px 16px;font-size:1rem;background:#1f5fbf;color:#fff;border:0;border-radius:6px}
+  #result{padding:12px;border-radius:6px;font-weight:600;margin-top:12px}
+  .ok{background:#dff5e1;color:#14532d}.bad{background:#fde2e2;color:#7f1d1d}
+  ul{padding-left:18px;margin:6px 0}
+  @media (max-width:420px){main{padding:8px}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Smart Campus Room Availability Checker</h1>
+  <div class="card">
+    <p><strong id="room"></strong><br>Current time (fixed): <span id="now"></span></p>
+    <label for="start">Start time (HH:MM)</label>
+    <input id="start" type="text" inputmode="numeric" placeholder="10:30" autocomplete="off">
+    <label for="duration">Duration (minutes, 1-120)</label>
+    <input id="duration" type="text" inputmode="numeric" placeholder="60" autocomplete="off">
+    <label><input id="blocked" type="checkbox"> Room is blocked</label>
+    <button id="check" type="button">Check availability</button>
+    <div id="result" role="status" aria-live="polite" hidden></div>
+  </div>
+  <div class="card"><strong>Existing bookings</strong><ul id="bookings"></ul></div>
+</main>
+<script src="availability.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

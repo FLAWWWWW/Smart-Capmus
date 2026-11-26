@@ -1,0 +1,21 @@
+UI results:
+('T1', '10:30', '60', False, 'Available [FREE]: The room is free for the requested interval.')
+('T2', '09:30', '60', False, 'Unavailable [OVERLAP]: The interval overlaps an existing booking.')
+('T3', '10:30', '60', True, 'Unavailable [ROOM_BLOCKED]: The room is blocked and cannot be booked.')
+('T4', '10:30', '0', False, 'Unavailable [INVALID_DURATION]: Duration must be a whole number of minutes greater than 0.')
+('T5', '10:30', '121', False, 'Unavailable [DURATION_TOO_LONG]: Duration must not exceed 120 minutes.')
+('T6', '07:00', '60', False, 'Unavailable [PAST_START]: The start time must be in the future (after the current time).')
+('T7', '10:00', '30', False, 'Available [FREE]: The room is free for the requested interval.')
+narrow 390px no horizontal scroll: True
+console/page errors: []
+fuzz (payload, start-result, duration-result, script-executed flag):
+('<img src=x onerror=window.__x=1>', 'Unavailable [INVALID_START]', 'Unavailable [INVALID_DURATION]', 0)
+('<script>window.__x=1</script>', 'Unavailable [INVALID_START]', 'Unavailable [INVALID_DURATION]', 0)
+('"><svg onload=window.__x=1>', 'Unavailable [INVALID_START]', 'Unavailable [INVALID_DURATION]', 0)
+("' OR '1'='1", 'Unavailable [INVALID_START]', 'Unavailable [INVALID_DURATION]', 0)
+('99999999999999999999', 'Unavailable [INVALID_START]', 'Unavailable [DURATION_TOO_LONG]', 0)
+('-1', 'Unavailable [INVALID_START]', 'Unavailable [INVALID_DURATION]', 0)
+('1e3', 'Unavailable [INVALID_START]', 'Unavailable [INVALID_DURATION]', 0)
+('12:60', 'Unavailable [INVALID_START]', 'Unavailable [INVALID_DURATION]', 0)
+('\x00', 'Unavailable [INVALID_START]', 'Unavailable [INVALID_DURATION]', 0)
+bookings model: [{"start":540,"end":600,"title":"Study group (fictional)"},{"start":780,"end":870,"title":"Club meeting (fictional)"}]
